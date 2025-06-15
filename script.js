@@ -4,4 +4,8 @@ function getComputerChoice() {
     return choice[Math.floor(Math.random() * 3)];
 }
 
-console.log(getComputerChoice());
+function getHumanChoice() {
+    let humanChoice = prompt("Rock, paper or scissors?");
+    return humanChoice;
+}
+
