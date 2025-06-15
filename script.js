@@ -12,8 +12,6 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-    humanChoice = getHumanChoice().toLowerCase();
-    computerChoice = getComputerChoice().toLowerCase();
     if (humanChoice == computerChoice) {
         console.log("The game ended as a draw!")
     }
@@ -35,4 +33,13 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-playRound();
+function playGame(){
+    for (let index = 0; index < 5; index++) {
+        let humanChoice = getHumanChoice().toLowerCase();
+        let computerChoice = getComputerChoice().toLowerCase(); 
+        playRound(humanChoice, computerChoice);
+    }
+    console.log(`\nFinal Score → You: ${humanScore}  Computer: ${computerScore}`);
+}
+
+playGame();
