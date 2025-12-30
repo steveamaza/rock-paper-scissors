@@ -1,39 +1,53 @@
 let humanScore = 0;
 let computerScore = 0;
+let playCount = 0;
+
+const rockButton = document.getElementById("rock")
+const paperButton = document.getElementById("paper")
+const scissorsButton = document.getElementById("scissors")
+const output = document.getElementById("results");
 
 function getComputerChoice() {
     const computerChoice = ["rock", "paper", "scissors"];
     return computerChoice[Math.floor(Math.random() * 3)];
 }
 
-function getHumanChoice() {
-    let humanChoice = prompt("Rock, paper or scissors?").toLowerCase();
-    return humanChoice;
-}
+rockButton.addEventListener('click', function (){
+    playGame('rock');
+});
+
+paperButton.addEventListener('click', function (){
+    playGame('paper');
+});
+
+scissorsButton.addEventListener('click', function (){
+    playGame('scissors');
+});
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice == computerChoice) {
-        console.log(`The game ended as a draw! You both chose ${humanChoice}`)
+        output.textContent = `The game ended as a draw! You both chose ${humanChoice}`;
     }
     else if (humanChoice == "rock" && computerChoice == "paper" || 
             humanChoice == "paper" && computerChoice == "scissors" ||
             humanChoice == "scissors" && computerChoice == "rock") {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
+        output.textContent = `You lose! ${computerChoice} beats ${humanChoice}`
         computerScore += 1
     }
     else {
-        console.log(`You win!  ${humanChoice} beats ${computerChoice}`)
+        output.textContent = `You win! ${humanChoice} beats ${computerChoice}`
         humanScore += 1;
     }
 }
 
-function playGame(){
-    for (let index = 0; index < 5; index++) {
-        let humanChoice = getHumanChoice();
-        let computerChoice = getComputerChoice(); 
-        playRound(humanChoice, computerChoice);
+function playGame(choice){
+    let humanChoice = choice;
+    let computerChoice = getComputerChoice(); 
+    playRound(humanChoice, computerChoice);
+    playCount++;
+    console.log(`This is play number ${playCount}`)
+    if (playCount == 5) {
+        output.textContent = `We have a winner! \nFinal Score → You: ${humanScore}  Computer: ${computerScore}`;
+        playCount = 0;
     }
-    console.log(`\nFinal Score → You: ${humanScore}  Computer: ${computerScore}`);
 }
-
-playGame();
