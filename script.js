@@ -6,6 +6,9 @@ const paperButton = document.getElementById("paper")
 const scissorsButton = document.getElementById("scissors")
 const output = document.getElementById("round-result");
 
+const displayedHumanScore = document.getElementById("human-score")
+const displayedComputerScore = document.getElementById("computer-score")
+
 function getComputerChoice() {
     const computerChoice = ["rock", "paper", "scissors"];
     return computerChoice[Math.floor(Math.random() * 3)];
@@ -35,10 +38,14 @@ function playRound(humanChoice, computerChoice) {
                 humanChoice == "scissors" && computerChoice == "rock") {
             output.textContent = `You lose! ${computerChoice} beats ${humanChoice}`
             computerScore += 1
+            displayedHumanScore.textContent = humanScore;
+            displayedComputerScore.textContent = computerScore;
         }
         else {
             output.textContent = `You win! ${humanChoice} beats ${computerChoice}`
             humanScore += 1;
+            displayedHumanScore.textContent = humanScore;
+            displayedComputerScore.textContent = computerScore;
         }
     }
 }
