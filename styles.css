@@ -12,18 +12,89 @@ main {
     flex-direction: column;
 }
 
-#play-buttons {
-    justify-content: center;
-    margin-top: 30px;
-    align-items: center;
-}
-
-#play-buttons {
-    text-align: center;
+#game-area {
+    margin: 20px;
+    max-width: 90%;
 }
 
 #results {
     background-color: #fff;
+    width: 100%;
     min-width: 700px;
+    min-height: 200px;
     margin: 20px;
+    border: 1px solid #e0e0e0;
+    box-sizing: border-box;
+    padding: 8px;
+}
+
+#play-buttons {
+    display: flex;
+    gap: 16px; 
+    justify-content: center;
+    min-width: 700px;
+    width: 100%;
+    margin: 20px;
+    align-items: stretch;
+    text-align: center;
+}
+
+button {
+    flex: 1 1 0;             /* fill available width, share equally */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 18px;      /* large, clickable area */
+    font-size: 18px;
+    font-weight: 600;
+    border: 1px solid rgba(0,0,0,0.12);
+    transition: transform 120ms ease, box-shadow 120ms ease;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.14), inset 0 -2px 0 rgba(0,0,0,0.03);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.10);
+}
+
+button:focus {
+    outline: 3px solid rgba(66,153,225,0.18);
+    outline-offset: 2px;
+}
+
+/* Keep layout usable on small screens */
+@media (max-width: 640px) {
+    #play-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+    button {
+        width: 100%;
+    }
+}
+
+#results table {
+    min-width: 50%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+#results tr:first-child th {
+    border-bottom: 2px solid #dadada;
+    padding: 10px 12px;
+}
+#results th, #results td {
+    padding: 10px 12px;
+    vertical-align: middle;
+}
+#results th:first-child,
+#results td:first-child {
+    border-right: 1px solid #e6e6e6; /* vertical line between columns */
 }
