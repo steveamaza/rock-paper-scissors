@@ -1,0 +1,29 @@
+body {
+    margin: 20px;
+    background-color: #ccc
+}
+
+header {
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+#play-buttons {
+    justify-content: center;
+    margin-top: 30px;
+    align-items: center;
+}
+
+#play-buttons {
+    text-align: center;
+}
+
+#results {
+    background-color: #fff;
+    min-width: 700px;
+    margin: 20px;
+}
